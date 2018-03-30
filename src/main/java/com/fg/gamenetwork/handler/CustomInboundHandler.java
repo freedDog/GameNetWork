@@ -1,14 +1,18 @@
 package com.fg.gamenetwork.handler;
 
+import com.fg.gamenetwork.server.IServerScript;
+
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
-import io.netty.util.CharsetUtil;
 
 public class CustomInboundHandler extends ChannelInboundHandlerAdapter{
-
+	private IServerScript serverScript;
+	public CustomInboundHandler(IServerScript serverScript) {
+		this.serverScript=serverScript;
+	}
 	@Override
 	public void channelActive(ChannelHandlerContext ctx) throws Exception {
 		System.out.println("channel active");
@@ -26,7 +30,8 @@ public class CustomInboundHandler extends ChannelInboundHandlerAdapter{
 		//打印接受到的消息
 		System.out.println("Server received:"+in.readInt());
 		//将消息返回给发送者，而不冲刷出站消息
-		ctx.write(in);
+//		ctx.pipeline().channel().write(7);
+		ctx.write(7);
 	}
 
 	@Override

@@ -3,6 +3,8 @@ package com.fg.gamenetwork;
 import java.net.InetSocketAddress;
 import com.fg.gamenetwork.channel.LengthBasedInitializer;
 import com.fg.gamenetwork.config.NetWorkServerConfig;
+import com.fg.gamenetwork.server.IServerScript;
+
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.EventLoopGroup;
@@ -19,7 +21,7 @@ public class EchoServer {
 		config.setIp("192.168.4.94");
 		config.setPort(9000);
 		try {
-			new EchoServer(config).start();
+			new EchoServer(config).start(new ServerImpl());
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -27,13 +29,13 @@ public class EchoServer {
 	/**
 	 * @throws Exception
 	 */
-	public void start() throws Exception{
+	public void start(IServerScript serverScript) throws Exception{
 		EventLoopGroup group=new NioEventLoopGroup();
 		try {
 			ServerBootstrap b=new ServerBootstrap();
 			b.group(group).channel(NioServerSocketChannel.class)
 			.localAddress(new InetSocketAddress(serverConfig.getPort()))
-			.childHandler(new LengthBasedInitializer());
+			.childHandler(new LengthBasedInitializer(serverScript));
 			ChannelFuture f=b.bind().sync();
 			f.channel().closeFuture().sync();
 		}finally {

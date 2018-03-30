@@ -28,7 +28,7 @@ public class ClientBootstrap {
 
 			@Override
 			public void channelRead0(ChannelHandlerContext ctx, ByteBuf msg) throws Exception {
-				System.out.println("client data");
+				System.out.println("client received:"+msg.readInt());
 			}
 
 			@Override
