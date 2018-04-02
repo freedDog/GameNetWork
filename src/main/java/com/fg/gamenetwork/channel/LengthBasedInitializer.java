@@ -5,7 +5,6 @@ import com.fg.gamenetwork.codec.CustomLengthFieldBasedFrameEncoder;
 import com.fg.gamenetwork.handler.CustomInboundHandler;
 import com.fg.gamenetwork.handler.CustomOutHandler;
 import com.fg.gamenetwork.server.IServerScript;
-
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
