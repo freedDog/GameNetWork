@@ -14,9 +14,7 @@ public class CustomLengthFieldBasedFrameDecoder extends LengthFieldBasedFrameDec
 	@Override
 	protected Object decode(ChannelHandlerContext ctx, ByteBuf in) throws Exception {
 		ByteBuf buf=(ByteBuf)super.decode(ctx, in);
-		buf.readInt();
+		int length=buf.readInt();
 		return buf;
 	}
-	
-
 }

@@ -10,8 +10,6 @@ public class CustomLengthFieldBasedFrameEncoder extends MessageToByteEncoder<Mes
 	@Override
 	protected void encode(ChannelHandlerContext ctx, Message msg, ByteBuf out) throws Exception {
 		msg.write(out);
-//		out.resetWriterIndex();
-//		out.writeInt(out.capacity());
 	}
 
 }

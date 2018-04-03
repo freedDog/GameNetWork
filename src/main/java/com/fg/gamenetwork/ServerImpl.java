@@ -1,5 +1,6 @@
 package com.fg.gamenetwork;
 
+import com.fg.gamenetwork.message.Message;
 import com.fg.gamenetwork.message.TestMessage;
 import com.fg.gamenetwork.server.IServerScript;
 

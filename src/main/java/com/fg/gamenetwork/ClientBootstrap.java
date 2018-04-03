@@ -38,7 +38,6 @@ public class ClientBootstrap {
 				buf.writeInt(4);
 				buf.writeInt(49);
 				ctx.writeAndFlush(buf);
-//				ctx.writeAndFlush("123456".getBytes());
 			}
 			
 		});
